@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TODO APP</title>
 
-  <!-- Enable dark mode in Tailwind -->
   <script>
     tailwind.config = {
       darkMode: 'class'
@@ -15,7 +14,6 @@
   </script>
 
 
-  <!-- Material Icons -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 
 </head>
@@ -39,10 +37,9 @@
       </div>
 
 
-      <!-- Two Column Layout -->
       <div class="flex flex-col md:flex-row gap-8">
 
-        <!-- Add Todo Section -->
+        <!-- Add Todo -->
         <div class="bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg p-6 w-full md:w-1/3">
 
           <h2 class="text-xl font-semibold mb-4">Add a New Todo</h2>
@@ -70,7 +67,7 @@
           </form>
         </div>
 
-        <!-- See Todos Section -->
+        <!-- See Todos -->
         <div
           class="bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg p-6 w-full md:w-2/3 relative flex flex-col min-h-[500px]">
 
@@ -78,9 +75,8 @@
 
           <h2 class="text-xl font-semibold mb-4">Your Todos</h2>
 
-          <!-- Search & Filter -->
           <div class="flex flex-col items-center gap-4 mb-4 text-center">
-            <!-- Search Input -->
+            <!-- Search bar -->
             <div class="relative w-full max-w-md">
               <input type="text" placeholder="Search tasks..."
                 class="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-900 text-gray-800 dark:text-gray-100 rounded-md placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500" />
@@ -90,7 +86,7 @@
               </span>
             </div>
 
-            <!-- Date Filters -->
+            <!--  date Filters -->
             <div class="flex flex-col sm:flex-row gap-4">
               <!-- Start Date -->
               <div class="text-left">
@@ -113,12 +109,11 @@
           </div>
 
 
-          <!-- Todo Items -->
           <div id="todoContainer" class="flex-grow space-y-4 overflow-y-auto">
             <!-- Todo items showed here -->
           </div>
 
-          <!-- Pagination -->
+          <!-- Pagination start here -->
           <div class="pt-4 border-t border-gray-200 dark:border-gray-700 mt-4" id="paginationControls">
             <div class="flex justify-between items-center">
               <button id="prevPage"

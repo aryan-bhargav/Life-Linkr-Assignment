@@ -13,7 +13,6 @@ const toggleButton = document.getElementById('darkModeToggle');
 const htmlElement = document.documentElement;
 const darkModeIcon = document.getElementById('darkModeIcon');
 
-// Toggle dark/light mode with icon
 toggleButton.addEventListener('click', () => {
   htmlElement.classList.toggle('dark');
   updateDarkModeIcon();
@@ -23,7 +22,7 @@ function updateDarkModeIcon() {
   const isDark = htmlElement.classList.contains('dark');
   darkModeIcon.textContent = isDark ? 'dark_mode' : 'light_mode';
 }
-updateDarkModeIcon(); // Initial icon state
+updateDarkModeIcon();
 
 const addTodoForm = document.getElementById("addTodoForm");
 const todoInput = document.getElementById("todoInput");
@@ -33,12 +32,10 @@ const pageSize = 5;
 let currentPage = 1;
 let allTodos = [];
 
-// Save todos to localStorage
 function saveTodosToLocalStorage() {
   localStorage.setItem('todos', JSON.stringify(allTodos));
 }
 
-// Load todos from localStorage or API
 async function fetchTodos() {
   const localData = localStorage.getItem('todos');
   if (localData) {
@@ -89,7 +86,7 @@ addTodoForm.addEventListener('submit', (e) => {
   };
 
   allTodos.unshift(newTodo);
-  saveTodosToLocalStorage(); // Save after adding
+  saveTodosToLocalStorage();
 
   addTodoForm.reset();
   currentPage = 1;
@@ -149,7 +146,7 @@ function createTodo(text, isCompleted = false, priority = 1) {
     }
   });
 
-  // Append elements
+  // Appending the elements
   newLabel.appendChild(newCheckbox);
   newLabel.appendChild(newSpan);
   newLabel.appendChild(newPriorityLabel);
@@ -211,7 +208,7 @@ function renderPageControls(currentPage, maxPages) {
 }
 
 function renderTodos() {
-  // Filter todos based on search and date
+
   const filtered = allTodos.filter(todo => {
     const matchesSearch = todo.todo.toLowerCase().includes(searchQuery);
     const createdDate = new Date(todo.createdAt);
