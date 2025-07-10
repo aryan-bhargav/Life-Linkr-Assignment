@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TODO APP</title>
+
+  <!-- Enable dark mode in Tailwind -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class'
+    }
+  </script>
+
+
+  <!-- Material Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+</head>
+
+<body>
+
+  <body
+    class="min-h-screen px-4 py-10 bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300 font-sans">
+
+    <div class="max-w-7xl mx-auto space-y-8">
+
+      <div class="flex flex-row gap-10 justify-between">
+        <h1 class="text-3xl font-extrabold text-center text-gray-900 dark:text-white">Todo App</h1>
+
+
+        <button id="darkModeToggle"
+          class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition-shadow shadow hover:shadow-lg flex items-center justify-center">
+          <span id="darkModeIcon" class="material-symbols-outlined text-white">
+          </span>
+        </button>
+      </div>
+
+
+      <!-- Two Column Layout -->
+      <div class="flex flex-col md:flex-row gap-8">
+
+        <!-- Add Todo Section -->
+        <div class="bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg p-6 w-full md:w-1/3">
+
+          <h2 class="text-xl font-semibold mb-4">Add a New Todo</h2>
+
+          <form id="addTodoForm" class="space-y-4">
+            <input type="text" id="todoInput" placeholder="Enter your task..."
+              class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required />
+
+            <select id="prioritySelect"
+              class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required>
+              <option value="">Select priority</option>
+              <option value="1">Very Low</option>
+              <option value="2">Low</option>
+              <option value="3">Medium</option>
+              <option value="4">High</option>
+              <option value="5">Very High</option>
+            </select>
+
+            <button type="submit"
+              class="w-full bg-green-600 hover:bg-green-700 text-white py-2 font-semibold rounded-md transition-shadow shadow-md hover:shadow-lg">
+              Add Todo
+            </button>
+          </form>
+        </div>
+
+        <!-- See Todos Section -->
+        <div
+          class="bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg p-6 w-full md:w-2/3 relative flex flex-col min-h-[500px]">
+
+
+
+          <h2 class="text-xl font-semibold mb-4">Your Todos</h2>
+
+          <!-- Search & Filter -->
+          <div class="flex flex-col items-center gap-4 mb-4 text-center">
+            <!-- Search Input -->
+            <div class="relative w-full max-w-md">
+              <input type="text" placeholder="Search tasks..."
+                class="w-full pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-900 text-gray-800 dark:text-gray-100 rounded-md placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              <span
+                class="material-symbols-outlined absolute left-3 top-2.5 text-gray-500 dark:text-gray-400 pointer-events-none">
+                search
+              </span>
+            </div>
+
+            <!-- Date Filters -->
+            <div class="flex flex-col sm:flex-row gap-4">
+              <!-- Start Date -->
+              <div class="text-left">
+                <label for="start-date" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Start Date
+                </label>
+                <input type="date" id="start-date" name="start-date"
+                  class="w-full sm:w-auto px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              </div>
+
+              <!-- End Date -->
+              <div class="text-left">
+                <label for="end-date" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  End Date
+                </label>
+                <input type="date" id="end-date" name="end-date"
+                  class="w-full sm:w-auto px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Todo Items -->
+          <div id="todoContainer" class="flex-grow space-y-4 overflow-y-auto">
+            <!-- Todo items showed here -->
+          </div>
+
+          <!-- Pagination -->
+          <div class="pt-4 border-t border-gray-200 dark:border-gray-700 mt-4" id="paginationControls">
+            <div class="flex justify-between items-center">
+              <button id="prevPage"
+                class="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition">
+                Prev
+              </button>
+              <div id="page-numbers" class="text-sm text-gray-600 dark:text-gray-300"></div>
+              <button id="nextPage"
+                class="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition">
+                Next
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</body>
+
+</html>
